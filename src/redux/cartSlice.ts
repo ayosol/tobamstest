@@ -43,7 +43,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity++;
       }
-      state.totalAmount += existingItem.price;
+      state.totalAmount += currentItem.price;
     },
     decrementItemInCart: (state: RootState, action: PayloadAction<any>) => {
       const currentItem = action.payload;
@@ -52,7 +52,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity--;
       }
-      state.totalAmount -= existingItem.price;
+      state.totalAmount -= currentItem.price;
     },
     deleteItemFromCart: (state: RootState, action: PayloadAction<any>) => {
       const currentItem = action.payload;

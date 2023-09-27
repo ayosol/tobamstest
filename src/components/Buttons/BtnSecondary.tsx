@@ -6,21 +6,17 @@ import BoldText from '../CustomTexts/BoldText';
 type Props = {
   onClick: () => void;
   btnTitle: string;
-  extraTitle?: string;
 };
 
-const BtnPrimary = ({onClick, btnTitle, extraTitle}: Props) => {
+const BtnSecondary = ({onClick, btnTitle}: Props) => {
   return (
     <Pressable style={styles.primaryBtn} onPress={onClick}>
-      <BoldText style={{color: COLOR.white}}>{btnTitle}</BoldText>
-      {extraTitle && (
-        <BoldText style={{color: COLOR.white}}> - {extraTitle}</BoldText>
-      )}
+      <BoldText style={{color: COLOR.primaryRed}}>{btnTitle}</BoldText>
     </Pressable>
   );
 };
 
-export default BtnPrimary;
+export default BtnSecondary;
 
 const styles = StyleSheet.create({
   primaryBtn: {
@@ -30,7 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 40,
-    backgroundColor: COLOR.primaryRed,
+    backgroundColor: COLOR.white,
     alignSelf: 'center',
+    borderColor: COLOR.primaryRed,
+    borderWidth: 1,
   },
 });

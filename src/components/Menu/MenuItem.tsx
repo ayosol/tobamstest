@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Pressable} from 'react-native';
 import {COLOR} from '../../util/colors';
 import CustomIcon from '../CustomIcons/CustomIcon';
 import BoldText from '../CustomTexts/BoldText';
@@ -10,15 +10,22 @@ import ICONS from '../../util/icons';
 import BtnAddToCart from '../Buttons/BtnAddToCart';
 import {addItemToCart} from '../../redux/cartSlice';
 import {Helper} from '../../util/helper';
+import {useNavigation} from '@react-navigation/native';
 
 const MenuItem = ({item, dispatch}: any) => {
+  const navigation = useNavigation();
   const addToCart = () => {
     console.log('add item to cart', item);
     dispatch(addItemToCart(item));
   };
 
+  const gotoDetails = () => {
+    const currentItem = {...item, quantity: 1};
+    navigation.navigate('Details', {currentItem});
+  };
+
   return (
-    <View style={styles.menuItem}>
+    <Pressable onPress={gotoDetails} style={styles.menuItem}>
       <View style={styles.likeBox}>
         <CustomIcon icon={ICONS.heartIcon} width={20} height={20} />
       </View>
@@ -35,7 +42,7 @@ const MenuItem = ({item, dispatch}: any) => {
       </View>
       <VerticalSpacer />
       <BtnAddToCart onClick={() => addToCart()} />
-    </View>
+    </Pressable>
   );
 };
 

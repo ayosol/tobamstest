@@ -96,6 +96,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 8,
+    borderWidth: 1,
+    borderColor: COLOR.border,
   },
   text: {
     color: COLOR.black,
