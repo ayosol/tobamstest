@@ -8,12 +8,15 @@ import {VerticalSpacer} from '../Spacers/VerticalSpacer';
 import {HorizontalSpacer} from '../Spacers/HorizontalSpacer';
 import ICONS from '../../util/icons';
 import BtnAddToCart from '../Buttons/BtnAddToCart';
+import {addItemToCart} from '../../redux/cartSlice';
+import {Helper} from '../../util/helper';
 
-const MenuItem = ({item}: any) => {
-  const addItemToCart = () => {
+const MenuItem = ({item, dispatch}: any) => {
+  const addToCart = () => {
     console.log('add item to cart', item);
+    dispatch(addItemToCart(item));
   };
-  console.log('item', item);
+
   return (
     <View style={styles.menuItem}>
       <View style={styles.likeBox}>
@@ -26,10 +29,12 @@ const MenuItem = ({item}: any) => {
           {item.name}
         </NormalText>
         <HorizontalSpacer width={8} />
-        <BoldText style={styles.price}>{item.price}</BoldText>
+        <BoldText style={styles.price}>
+          {Helper.formatPrice(item.price)}
+        </BoldText>
       </View>
       <VerticalSpacer />
-      <BtnAddToCart onClick={addItemToCart} />
+      <BtnAddToCart onClick={() => addToCart()} />
     </View>
   );
 };

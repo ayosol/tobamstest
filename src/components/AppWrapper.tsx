@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   topContainer: {
+    backgroundColor: COLOR.appBg,
     flexDirection: 'row',
     width: '100%',
     marginBottom: 8,
